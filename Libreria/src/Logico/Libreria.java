@@ -1,12 +1,18 @@
 package Logico;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 public class Libreria {
 
 	ArrayList<Libro> libros;
 	ArrayList<Autor> autores;
 	private static Libreria libreria;
+
 	
 	public Libreria()
 	{
@@ -25,6 +31,11 @@ public class Libreria {
 			libreria = new Libreria();
 		}
 		return libreria;
+	}
+	
+	public void SaveData() throws JsonIOException, IOException
+	{
+		
 	}
 	
 	public Autor getAutorByName(String name)

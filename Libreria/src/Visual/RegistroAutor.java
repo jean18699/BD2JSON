@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+
 import Logico.Autor;
 import Logico.Libreria;
 
@@ -16,6 +20,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +35,8 @@ public class RegistroAutor extends JFrame {
 	private JTextField txtLugarNacimiento;
 	private JTextField txtNombre;
 	private JTextField txtDefuncion;
+	Gson gson;
+	
 
 	
 	/**
@@ -101,7 +109,7 @@ public class RegistroAutor extends JFrame {
 		JButton btnRegistrar = new JButton("Registrar");
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			
+				gson = new Gson();	
 
 			    Date dateNacimiento = null;
 				try {
@@ -122,6 +130,9 @@ public class RegistroAutor extends JFrame {
 						cmbNacionalidad.getSelectedItem().toString(),cmbSexo.getSelectedItem().toString());
 				
 				Libreria.getInstance().addAutor(autor);
+			
+				
+				
 				dispose();
 			
 			}

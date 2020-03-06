@@ -168,6 +168,10 @@ public class RegistroLibro extends JFrame {
 					
 					System.out.println(Libreria.getInstance().getLibros().get(0).getAutores());
 					
+					
+					
+					
+					
 					dispose();
 					
 			}
