@@ -33,26 +33,14 @@ public class RegistroLibro extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistroLibro frame = new RegistroLibro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
 	public RegistroLibro() {
 		setTitle("Registrar libro");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 461, 312);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -163,7 +151,22 @@ public class RegistroLibro extends JFrame {
 					
 					Libreria.getInstance().addLibro(libro);
 					
-					System.out.println(Libreria.getInstance().getLibros().get(0).getAutores().get(0).getNombre());
+					//Agregando a los autores en sus clases que son autores de este libro:
+					for(int i = 0; i < autores.size();i++)
+					{
+						
+						for(int j = 0; j < Libreria.getInstance().getAutores().size();j++)
+						{
+							
+							if(Libreria.getInstance().getAutores().get(j).getNombre().equalsIgnoreCase(autores.get(i).getNombre()))
+							{
+								Libreria.getInstance().getAutores().get(j).addLibroPublicado(libro);
+							}
+						}
+							
+					}
+					
+					System.out.println(Libreria.getInstance().getLibros().get(0).getAutores());
 					
 					dispose();
 					

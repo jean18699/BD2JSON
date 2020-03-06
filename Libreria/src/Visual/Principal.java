@@ -36,6 +36,8 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		setTitle("Libreria La Famosa");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		

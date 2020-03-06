@@ -30,29 +30,14 @@ public class RegistroAutor extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtDefuncion;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistroAutor frame = new RegistroAutor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
 	public RegistroAutor() {
 		setTitle("Registrar autor");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 266, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

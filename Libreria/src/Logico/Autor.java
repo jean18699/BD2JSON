@@ -30,6 +30,11 @@ public class Autor {
 		return fechaNacimiento;
 	}
 
+	public void addLibroPublicado(Libro libro)
+	{
+		librosPublicados.add(libro);
+	}
+	
 	
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
