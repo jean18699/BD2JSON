@@ -6,6 +6,7 @@ public class Libreria {
 
 	ArrayList<Libro> libros;
 	ArrayList<Autor> autores;
+	private static Libreria libreria;
 	
 	public Libreria()
 	{
@@ -18,6 +19,32 @@ public class Libreria {
 	{
 		libros.add(libro);
 	}
+	
+	public static Libreria getInstance() {
+		if (libreria == null) {
+			libreria = new Libreria();
+		}
+		return libreria;
+	}
+	
+	public Autor getAutorByName(String name)
+	{
+		Autor autor = null;
+		
+		for(int i = 0; i < autores.size(); i++)
+		{
+			if(autores.get(i).getNombre().contentEquals(name))
+			{
+				
+				autor = autores.get(i);
+			}
+		}
+		
+		return autor;
+		
+	}
+	
+	
 
 	public void addAutor(Autor autor)
 	{

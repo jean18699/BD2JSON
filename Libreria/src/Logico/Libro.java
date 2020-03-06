@@ -45,6 +45,8 @@ public class Libro {
 	public int getAgnoPrimeraEdicion() {
 		return agnoPrimeraEdicion;
 	}
+	
+	
 
 	public void setAgnoPrimeraEdicion(int agnoPrimeraEdicion) {
 		this.agnoPrimeraEdicion = agnoPrimeraEdicion;
@@ -72,6 +74,14 @@ public class Libro {
 
 	public void setSipnosis(String sipnosis) {
 		this.sipnosis = sipnosis;
+	}
+
+	public ArrayList<Autor> getAutores() {
+		return autores;
+	}
+
+	public void setAutores(ArrayList<Autor> autores) {
+		this.autores = autores;
 	}
 	
 }

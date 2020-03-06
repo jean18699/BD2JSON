@@ -7,7 +7,7 @@ public class Autor {
 
 	private Date fechaNacimiento;
 	private String nombre;
-	private Date fechaFuncion;
+	private Date fechaDefuncion;
 	private String lugarNacimiento;
 	private String nacionalidad;
 	private String sexo;
@@ -20,7 +20,7 @@ public class Autor {
 		librosPublicados = new ArrayList<Libro>();
 		this.fechaNacimiento = fechaNacimiento;
 		this.nombre = nombre;
-		this.fechaFuncion = fechaFuncion;
+		this.fechaDefuncion = fechaDefuncion;
 		this.lugarNacimiento = lugarNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.sexo = sexo;
@@ -30,6 +30,7 @@ public class Autor {
 		return fechaNacimiento;
 	}
 
+	
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
@@ -43,11 +44,11 @@ public class Autor {
 	}
 
 	public Date getFechaFuncion() {
-		return fechaFuncion;
+		return fechaDefuncion;
 	}
 
 	public void setFechaFuncion(Date fechaFuncion) {
-		this.fechaFuncion = fechaFuncion;
+		this.fechaDefuncion = fechaFuncion;
 	}
 
 	public String getLugarNacimiento() {
