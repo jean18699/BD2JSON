@@ -1,11 +1,18 @@
 package Logico;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
+import com.google.gson.GsonBuilder;
+
+//import com.google.gson.Gson;
+//import com.google.gson.JsonIOException;
 
 public class Libreria {
 
@@ -29,14 +36,39 @@ public class Libreria {
 	public static Libreria getInstance() {
 		if (libreria == null) {
 			libreria = new Libreria();
+			
+	        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	        
+			if(new File("lib.json").length() > 0)
+			{
+		        try (Reader reader = new FileReader("lib.json")) {
+		        	
+		        	Collections.addAll(libreria.libros, gson.fromJson(reader, Libro[].class));
+					
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+			}
+			
+			if(new File("aut.json").length() > 0)
+			{
+		        try (Reader reader = new FileReader("aut.json")) {
+		        	
+		        	Collections.addAll(libreria.autores, gson.fromJson(reader, Autor[].class));
+					
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+			}
+			
 		}
 		return libreria;
 	}
 	
-	public void SaveData() throws JsonIOException, IOException
-	{
-		
-	}
+//	public void SaveData() throws JsonIOException, IOException
+//	{
+//		
+//	}
 	
 	public Autor getAutorByName(String name)
 	{

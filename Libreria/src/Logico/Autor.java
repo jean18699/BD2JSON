@@ -1,9 +1,10 @@
 package Logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Autor {
+public class Autor implements Serializable {
 
 	private Date fechaNacimiento;
 	private String nombre;
@@ -11,16 +12,16 @@ public class Autor {
 	private String lugarNacimiento;
 	private String nacionalidad;
 	private String sexo;
-	private ArrayList<Libro> librosPublicados;
+	private ArrayList<String> librosPublicados;
 	
 	public Autor(Date fechaNacimiento, String nombre, Date fechaFuncion, String lugarNacimiento, String nacionalidad,
 			String sexo) {
 		super();
 		
-		librosPublicados = new ArrayList<Libro>();
+		librosPublicados = new ArrayList<String>();
 		this.fechaNacimiento = fechaNacimiento;
 		this.nombre = nombre;
-		this.fechaDefuncion = fechaDefuncion;
+		this.fechaDefuncion = fechaFuncion;
 		this.lugarNacimiento = lugarNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.sexo = sexo;
@@ -30,9 +31,9 @@ public class Autor {
 		return fechaNacimiento;
 	}
 
-	public void addLibroPublicado(Libro libro)
+	public void addLibroPublicado(String nombreLibro)
 	{
-		librosPublicados.add(libro);
+		librosPublicados.add(nombreLibro);
 	}
 	
 	

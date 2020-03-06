@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import Logico.Autor;
 import Logico.Libreria;
 import Logico.Libro;
@@ -18,6 +21,8 @@ import javax.swing.JSpinner;
 import javax.swing.JButton;
 import java.awt.Window.Type;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
@@ -37,7 +42,7 @@ public class RegistroLibro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroLibro() {
+	public RegistroLibro(Libreria myLib) {
 		setTitle("Registrar libro");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -147,7 +152,11 @@ public class RegistroLibro extends JFrame {
 					Libro libro = new Libro(txtTitulo.getText(),cmbIdioma.getSelectedItem().toString(),(int) spnPrimeraEdicion.getValue(),
 							txtEditorial.getText(),cmbGenero.getSelectedItem().toString(),txtSipnosis.getText());
 					
-					libro.setAutores(autores);
+					
+					for(int i = 0; i < autores.size(); i++)
+					{
+						libro.addAutor(autores.get(i).getNombre());
+					}
 					
 					Libreria.getInstance().addLibro(libro);
 					
@@ -160,13 +169,26 @@ public class RegistroLibro extends JFrame {
 							
 							if(Libreria.getInstance().getAutores().get(j).getNombre().equalsIgnoreCase(autores.get(i).getNombre()))
 							{
-								Libreria.getInstance().getAutores().get(j).addLibroPublicado(libro);
+								Libreria.getInstance().getAutores().get(j).addLibroPublicado(libro.getTitulo());
 							}
 						}
 							
 					}
 					
-					System.out.println(Libreria.getInstance().getLibros().get(0).getAutores());
+			        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			        try (FileWriter writer = new FileWriter("lib.json")) {
+			            gson.toJson(myLib.getLibros(), writer);
+			        } catch (IOException e) {
+			            e.printStackTrace();
+			        }
+			        
+			        try (FileWriter writer = new FileWriter("aut.json")) {
+			            gson.toJson(myLib.getAutores(), writer);
+			        } catch (IOException e) {
+			            e.printStackTrace();
+			        }
+					
+//					System.out.println(Libreria.getInstance().getLibros().get(0).getAutores());
 					
 					
 					

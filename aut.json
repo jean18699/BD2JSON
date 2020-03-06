@@ -1,0 +1,13 @@
+[
+  {
+    "fechaNacimiento": "May 5, 1789, 12:00:00 AM",
+    "nombre": "ertyuio",
+    "fechaDefuncion": "May 5, 2045, 12:00:00 AM",
+    "lugarNacimiento": "Samana",
+    "nacionalidad": "Estados Unidos",
+    "sexo": "Hombre",
+    "librosPublicados": [
+      "El real libro"
+    ]
+  }
+]

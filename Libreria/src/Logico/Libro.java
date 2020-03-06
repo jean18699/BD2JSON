@@ -1,8 +1,9 @@
 package Logico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Libro {
+public class Libro{
 
 	
 	private String titulo;
@@ -11,13 +12,13 @@ public class Libro {
 	private String casaEditora;
 	private String genero;
 	private String sipnosis;
-	private ArrayList<Autor> autores;
+	private ArrayList<String> autores;//ArrayList<Autor> autores;
 	
 	public Libro(String titulo, String idioma, int agnoPrimeraEdicion, String casaEditora, String genero,
 			String sipnosis) {
 		super();
 		
-		autores = new ArrayList<Autor>();
+		autores = new ArrayList<String>();
 		this.titulo = titulo;
 		this.idioma = idioma;
 		this.agnoPrimeraEdicion = agnoPrimeraEdicion;
@@ -76,12 +77,30 @@ public class Libro {
 		this.sipnosis = sipnosis;
 	}
 
-	public ArrayList<Autor> getAutores() {
+	public ArrayList<String> getAutores() {
 		return autores;
 	}
 
-	public void setAutores(ArrayList<Autor> autores) {
+	public void setAutores(ArrayList<String> autores) {
 		this.autores = autores;
 	}
+	
+	public void addAutor(String Nombre)
+	{
+		autores.add(Nombre);
+	}
+	
+	// Creating toString 
+    @Override
+    public String toString() 
+    { 
+        return "Libro [titulo=" + titulo 
+            + ", idioma=" + idioma 
+            + ", agnoPrimeraEdicion=" + agnoPrimeraEdicion
+            + ", casaEditora=" + casaEditora
+            + ", sipnosis=" + genero
+            + ", "
+            +"]"; 
+    }
 	
 }

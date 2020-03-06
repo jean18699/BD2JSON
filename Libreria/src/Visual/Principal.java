@@ -6,11 +6,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logico.Autor;
+import Logico.Libreria;
+import Logico.Libro;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class Principal extends JFrame {
 
@@ -24,6 +30,7 @@ public class Principal extends JFrame {
 			public void run() {
 				try {
 					Principal frame = new Principal();
+			        
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,6 +43,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
+		Libreria myLib  = Libreria.getInstance(); 
 		setTitle("Libreria La Famosa");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,7 +59,7 @@ public class Principal extends JFrame {
 		mntmRegistrarLibro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			
-				RegistroLibro registroLibro = new RegistroLibro();
+				RegistroLibro registroLibro = new RegistroLibro(myLib);
 				registroLibro.setVisible(true);
 				
 			
@@ -63,7 +71,7 @@ public class Principal extends JFrame {
 		mntmRegistrarAutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				RegistroAutor registroAutor = new RegistroAutor();
+				RegistroAutor registroAutor = new RegistroAutor(myLib);
 				registroAutor.setVisible(true);
 				
 			}
@@ -73,6 +81,33 @@ public class Principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		JButton btnListar = new JButton("LISTAR");
+		btnListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				System.out.println("AUTORES: ");
+				for(int i = 0; i < Libreria.getInstance().getAutores().size();i++)
+				{
+				Autor autor = Libreria.getInstance().getAutores().get(i);
+				System.out.println("Nombre: "+autor.getNombre()+ ", Nacionalidad: "+ autor.getNacionalidad() + ", Sexo: " +
+				autor.getSexo() + ", Fecha de nacimiento: "+ autor.getFechaNacimiento() + ", Lugar de nacimiento: "+
+				autor.getLugarNacimiento() + ", Fecha defuncion: " + autor.getFechaFuncion());
+				}
+
+				System.out.println("\n\nLIBROS: ");
+				for(int i = 0; i < Libreria.getInstance().getLibros().size();i++)
+				{
+				Libro libro = Libreria.getInstance().getLibros().get(i);
+				System.out.println("Titulo: "+libro.getTitulo()+ ", Genero: "+ libro.getGenero() + ", Editorial: " +
+				libro.getCasaEditora() + ", Año primera edicion: "+ libro.getAgnoPrimeraEdicion() + ", Idioma: "+
+				libro.getIdioma() + ", Sipnosis: " + libro.getSipnosis() + ", Autores: " + libro.getAutores()
+				);
+				}
+				
+			}
+		});
+		contentPane.add(btnListar, BorderLayout.CENTER);
 	}
 
 }
