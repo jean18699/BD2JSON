@@ -130,9 +130,8 @@ public class RegistroAutor extends JFrame {
 						cmbNacionalidad.getSelectedItem().toString(),cmbSexo.getSelectedItem().toString());
 				
 				Libreria.getInstance().addAutor(autor);
-			
 				
-				
+				Libreria.getInstance().SaveData();
 				dispose();
 			
 			}

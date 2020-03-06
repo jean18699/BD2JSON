@@ -147,7 +147,10 @@ public class RegistroLibro extends JFrame {
 					Libro libro = new Libro(txtTitulo.getText(),cmbIdioma.getSelectedItem().toString(),(int) spnPrimeraEdicion.getValue(),
 							txtEditorial.getText(),cmbGenero.getSelectedItem().toString(),txtSipnosis.getText());
 					
-					libro.setAutores(autores);
+					for(int i = 0; i < autores.size();i++)
+					{
+						libro.addAutor(autores.get(i).getNombre());
+					}
 					
 					Libreria.getInstance().addLibro(libro);
 					
@@ -160,18 +163,13 @@ public class RegistroLibro extends JFrame {
 							
 							if(Libreria.getInstance().getAutores().get(j).getNombre().equalsIgnoreCase(autores.get(i).getNombre()))
 							{
-								Libreria.getInstance().getAutores().get(j).addLibroPublicado(libro);
+								Libreria.getInstance().getAutores().get(j).addLibroPublicado(libro.getTitulo());
 							}
 						}
 							
 					}
 					
-					System.out.println(Libreria.getInstance().getLibros().get(0).getAutores());
-					
-					
-					
-					
-					
+					Libreria.getInstance().SaveData();
 					dispose();
 					
 			}

@@ -1,11 +1,15 @@
 package Logico;
 
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 
 public class Libreria {
 
@@ -33,8 +37,38 @@ public class Libreria {
 		return libreria;
 	}
 	
-	public void SaveData() throws JsonIOException, IOException
+	public void SaveData()
 	{
+		
+		//FileOutputStream saveFile = new FileOutputStream("libreria.sav");
+		
+/*		Gson g = new Gson();
+		
+		JsonArray libreriaJSON = new JsonArray();
+		
+		String str = g.toJson(/*Libreria.getInstance()libreria);
+		
+		libreriaJSON.add(str);
+		
+		try(FileWriter file = new FileWriter("libreria.json")){
+			
+			file.write(libreriaJSON.toString());
+			file.flush();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(str);
+		*/
+	}
+	
+	public void loadData()
+	{
+		
+		
+		
 		
 	}
 	
